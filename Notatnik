@@ -19,7 +19,11 @@ while True:
     choice = input("Wybierz opcję: ")
 
     if choice == "1":
-        text = input("Wpisz notatkę: ")
+        text = input("Wpisz notatkę: ").strip()
+        if not text:
+            print("Notatka nie może być pusta!")
+            continue
+
         notes.append(text)
         with open(FILE, "w", encoding="utf-8") as f:
             json.dump(notes, f, ensure_ascii=False, indent=4)
